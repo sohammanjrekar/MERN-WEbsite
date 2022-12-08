@@ -1,9 +1,23 @@
-require('./database/conn')
+
 const express = require("express");
+const mongoose = require ('mongoose');
 const app = express();
 //config.env
 const dotenv = require("dotenv");
 dotenv.config({path:'./config.env'})
+
+
+require('./database/conn')
+app.use(express.json())
+
+
+const PORT=process.env.PORT
+
+// we link the router
+app.use(require('./router/auth'));
+
+
+
 
 // middleware
 const  middleware=(req,res,next)=>{
@@ -30,4 +44,4 @@ app.get("/login", (req, res) => {
   res.send("Welocme! login");
 });
 
-app.listen(5000);
+app.listen(PORT);

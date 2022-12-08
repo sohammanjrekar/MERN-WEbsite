@@ -25,4 +25,4 @@ const userSchema= new mongoose.Schema({
 
 const User =mongoose.model('registration',userSchema);
 
-module.exports=user
+module.exports=User
